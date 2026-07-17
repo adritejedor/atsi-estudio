@@ -1,41 +1,85 @@
 <header>
-  <a routerLink="/" aria-label="ATSIestudio, inicio">ATSIestudio</a>
-  <nav aria-label="Navegación principal">
-    <ul>
-      <li>
-        <a
-          routerLink="/"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          [routerLinkActiveOptions]="{ exact: true }"
-          >Inicio</a
-        >
-      </li>
-      <li>
-        <a routerLink="/servicios" routerLinkActive="active" ariaCurrentWhenActive="page"
-          >Servicios</a
-        >
-      </li>
-      <li>
-        <a routerLink="/como-trabajamos" routerLinkActive="active" ariaCurrentWhenActive="page"
-          >Cómo trabajamos</a
-        >
-      </li>
-      <li>
-        <a routerLink="/proyectos" routerLinkActive="active" ariaCurrentWhenActive="page"
-          >Proyectos</a
-        >
-      </li>
-      <li>
-        <a routerLink="/sobre-atsi-estudio" routerLinkActive="active" ariaCurrentWhenActive="page"
-          >Sobre ATSIestudio</a
-        >
-      </li>
-      <li>
-        <a routerLink="/contacto" routerLinkActive="active" ariaCurrentWhenActive="page"
-          >Contacto</a
-        >
-      </li>
-    </ul>
-  </nav>
+  <div class="header-content">
+    <a class="wordmark" routerLink="/" aria-label="ATSIestudio, inicio" (click)="closeMenu()">
+      <picture>
+        <source media="(max-width: 30rem)" srcset="/images/atsi-estudio-symbol.svg" />
+        <img src="/images/atsi-estudio-logo.svg" width="1200" height="360" alt="" />
+      </picture>
+    </a>
+
+    <button
+      #menuToggle
+      class="menu-toggle"
+      type="button"
+      aria-controls="primary-navigation"
+      [attr.aria-expanded]="isMenuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span class="menu-toggle-label">Menú</span>
+      <span class="menu-toggle-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <nav id="primary-navigation" aria-label="Navegación principal" [class.is-open]="isMenuOpen()">
+      <ul>
+        <li>
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
+            >Inicio</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/servicios"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Servicios</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/como-trabajamos"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Cómo trabajamos</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/proyectos"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Proyectos</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/sobre-atsi-estudio"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Sobre ATSIestudio</a
+          >
+        </li>
+      </ul>
+
+      <a
+        class="contact-cta"
+        routerLink="/contacto"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        (click)="closeMenu()"
+        >Cuéntanos tu proyecto</a
+      >
+    </nav>
+  </div>
 </header>

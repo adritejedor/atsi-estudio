@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">ATSIestudio</title>
+  <desc id="desc">Logotipo horizontal con símbolo arquitectónico en forma de A, azul marino y acento azul eléctrico.</desc>
+  <g transform="translate(72 35)">
+    <path d="M35 260 L150 40 H190 L305 260 H242 L170 118 L98 260 Z" fill="#0B1F3A"/>
+    <rect x="143" y="198" width="54" height="62" rx="2" fill="#1E63FF"/>
+  </g>
+  <g transform="translate(410 70)">
+    <text x="0" y="145" font-family="Inter, Arial, Helvetica, sans-serif" font-size="150" font-weight="700" letter-spacing="6" fill="#0B1F3A">ATSI</text>
+    <text x="8" y="238" font-family="Inter, Arial, Helvetica, sans-serif" font-size="58" font-weight="400" letter-spacing="24" fill="#0B1F3A">estudio</text>
+  </g>
+</svg>
