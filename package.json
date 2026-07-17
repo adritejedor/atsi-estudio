@@ -10,6 +10,8 @@
     "start": "ng serve",
     "build": "ng build",
     "build:production": "ng build --configuration production",
+    "firebase:emulators": "npm run build && firebase emulators:start --only functions,hosting",
+    "firebase:deploy": "npm run build && firebase deploy --only hosting,functions",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",

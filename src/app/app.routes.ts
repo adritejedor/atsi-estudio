@@ -59,7 +59,7 @@ export const routes: Routes = [
   },
   {
     path: 'contacto',
-    title: 'Contacto | ATSIestudio',
+    title: 'Contacto y presupuesto | ATSIestudio',
     loadComponent: () => import('./pages/contact/contact').then(({ Contact }) => Contact),
   },
   {
