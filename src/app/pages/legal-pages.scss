@@ -1,0 +1,158 @@
+:host {
+  display: block;
+}
+
+.legal-page {
+  display: grid;
+  max-width: 58rem;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.legal-header {
+  max-width: 52rem;
+}
+
+.eyebrow {
+  margin-bottom: 1rem;
+  color: var(--color-accent);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.legal-intro {
+  max-width: 46rem;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+}
+
+.draft-notice {
+  max-width: 50rem;
+  margin: 2rem 0 0;
+  padding: 1rem 1.25rem;
+  border: 0.0625rem solid #b78900;
+  border-radius: 0.75rem;
+  background: #fff8df;
+  color: #543d00;
+  font-size: 1rem;
+}
+
+.legal-index {
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-surface);
+}
+
+.legal-index h2 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.legal-index ol {
+  display: grid;
+  margin: 0;
+  padding-left: 1.25rem;
+  gap: 0.5rem;
+}
+
+.legal-page section {
+  scroll-margin-top: 7rem;
+}
+
+.legal-page section + section {
+  padding-top: clamp(2rem, 5vw, 3.5rem);
+  border-top: 0.0625rem solid var(--color-border);
+}
+
+h2 {
+  max-width: 30ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.625rem, 4vw, 2.5rem);
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  margin: 2rem 0 0.75rem;
+  font-size: 1.25rem;
+}
+
+ul {
+  display: grid;
+  max-width: 68ch;
+  padding-left: 1.25rem;
+  gap: 0.5rem;
+}
+
+.legal-data {
+  margin: 0;
+  border-top: 0.0625rem solid var(--color-border);
+}
+
+.legal-data div {
+  display: grid;
+  padding-block: 0.875rem;
+  border-bottom: 0.0625rem solid var(--color-border);
+  gap: 0.25rem;
+}
+
+.legal-data dt {
+  font-weight: 700;
+}
+
+.legal-data dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 0.75rem;
+}
+
+.table-wrapper:focus-visible {
+  outline: 0.125rem solid var(--color-accent);
+  outline-offset: 0.1875rem;
+  box-shadow: var(--focus-ring);
+}
+
+table {
+  width: 100%;
+  min-width: 42rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 0.875rem 1rem;
+  border-bottom: 0.0625rem solid var(--color-border);
+  vertical-align: top;
+}
+
+thead {
+  background: var(--color-surface);
+}
+
+tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.legal-update {
+  padding-top: 1.5rem;
+  border-top: 0.0625rem solid var(--color-border);
+}
+
+.legal-update p {
+  margin-bottom: 0;
+  font-size: 0.9375rem;
+}
+
+@media (min-width: 40rem) {
+  .legal-data div {
+    grid-template-columns: minmax(10rem, 0.45fr) minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+}

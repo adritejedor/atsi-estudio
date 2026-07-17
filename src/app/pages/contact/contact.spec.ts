@@ -20,7 +20,11 @@ describe('Contact', () => {
     const element = fixture.nativeElement as HTMLElement;
 
     expect(element.querySelectorAll('h1')).toHaveLength(1);
-    expect(element.querySelector('a[href="mailto:adriantejedor96@gmail.com"]')).toBeTruthy();
+    const emailLink = element.querySelector<HTMLAnchorElement>(
+      'a[href="mailto:contacto@atsiestudio.com"]',
+    );
+    expect(emailLink).toBeTruthy();
+    expect(emailLink?.textContent).toContain('contacto@atsiestudio.com');
     expect(element.querySelector('a[href="tel:+34655340607"]')).toBeTruthy();
     expect(element.querySelector('a[href="https://wa.me/34655340607"]')).toBeTruthy();
     expect(element.querySelectorAll('label').length).toBeGreaterThanOrEqual(7);
