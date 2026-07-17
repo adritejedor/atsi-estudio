@@ -97,12 +97,14 @@ elementos provisionales por error.
 
 ## SEO y configuración pública
 
-- [ ] Confirmar el dominio canónico definitivo y variantes `www`/sin `www`.
-- [ ] Completar metadata por ruta: descriptions, canonical y Open Graph únicos.
-- [ ] Generar y validar `sitemap.xml` y `robots.txt` con las URLs definitivas.
+- [x] Confirmar `https://atsiestudio.com` sin `www` como dominio canónico definitivo.
+- [ ] Configurar `www.atsiestudio.com` como dominio adicional en DNS/Firebase Hosting y aplicar una
+      redirección permanente hacia la misma ruta de `https://atsiestudio.com`.
+- [x] Completar metadata por ruta: descriptions, canonical y Open Graph únicos, sin imagen social.
+- [x] Generar y validar `sitemap.xml` y `robots.txt` con el dominio canónico definitivo.
 - [ ] Definir la imagen social y los datos visibles que permitan, si procede, JSON-LD válido.
-- [ ] Verificar que la 404 devuelve el comportamiento HTTP esperado en Firebase Hosting y que no se
-      indexa como una página normal.
+- [ ] Verificar en preview/producción que Firebase Hosting sirve el `404.html` estático con estado 404;
+      la configuración local ya evita el fallback con estado 200 y la página declara `noindex`.
 - [ ] Revisar enlazado interno, headings y contenido prerenderizado de todas las rutas.
 
 ## Calidad técnica y QA
@@ -139,5 +141,7 @@ elementos provisionales por error.
 - Receptor interno actual del formulario: `adriantejedor96@gmail.com`.
 - Teléfono y WhatsApp actuales: `655 340 607`.
 - Remitente previsto en Resend: `contacto@atsiestudio.com`.
+- Dominio canónico: `https://atsiestudio.com`; `www.atsiestudio.com` será únicamente una variante de
+  acceso redirigida a la versión sin `www`.
 - No almacenar leads en Firestore por defecto.
 - No cargar Google Analytics antes de obtener consentimiento.
