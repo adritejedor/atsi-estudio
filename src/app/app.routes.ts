@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    title: 'ATSIestudio',
+    title: 'Desarrollo web para pymes | ATSIestudio',
     loadComponent: () => import('./pages/home/home').then(({ Home }) => Home),
     pathMatch: 'full',
   },
