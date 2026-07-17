@@ -2,3 +2,15 @@
   display: block;
   min-height: 100%;
 }
+
+.skip-link {
+  left: 1rem;
+  position: fixed;
+  top: 1rem;
+  transform: translateY(calc(-100% - 2rem));
+  z-index: 1;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
