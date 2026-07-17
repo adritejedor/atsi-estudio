@@ -347,9 +347,12 @@ details p {
 
 @media (min-width: 45rem) {
   .visual-grid,
-  .problem-list,
-  .service-grid {
+  .problem-list {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .visual-grid div {

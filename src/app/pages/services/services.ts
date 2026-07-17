@@ -4,5 +4,6 @@ import { RouterLink } from '@angular/router';
   selector: 'app-services',
   imports: [RouterLink],
   templateUrl: './services.html',
+  styleUrl: '../service-pages.scss',
 })
 export class Services {}

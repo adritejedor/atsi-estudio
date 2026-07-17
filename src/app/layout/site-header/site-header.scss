@@ -97,11 +97,23 @@ nav.is-open {
   display: block;
 }
 
-ul {
+.primary-menu {
   display: grid;
   margin: 0 0 1rem;
   padding: 0;
   list-style: none;
+}
+
+.services-submenu {
+  margin: 0 0 0.5rem 1rem;
+  padding: 0 0 0 1rem;
+  border-left: 0.125rem solid var(--color-border);
+  list-style: none;
+}
+
+.services-submenu a {
+  min-height: 2.5rem;
+  font-size: 0.875rem;
 }
 
 nav a {
@@ -160,7 +172,7 @@ nav a.contact-cta.active {
     gap: clamp(1rem, 2vw, 2rem);
   }
 
-  ul {
+  .primary-menu {
     display: flex;
     margin: 0;
     align-items: center;
@@ -171,7 +183,41 @@ nav a.contact-cta.active {
     position: relative;
   }
 
-  nav li a::after {
+  .services-menu-item {
+    position: relative;
+  }
+
+  .services-submenu {
+    display: none;
+    position: absolute;
+    top: calc(100% - 0.25rem);
+    left: -1.25rem;
+    width: 16rem;
+    margin: 0;
+    padding: 0.75rem;
+    border: 0.0625rem solid var(--color-border);
+    border-radius: 0.75rem;
+    background: var(--color-background);
+    box-shadow: 0 1rem 2.5rem rgba(11, 31, 58, 0.1);
+  }
+
+  .services-menu-item:hover .services-submenu,
+  .services-menu-item:focus-within .services-submenu {
+    display: block;
+  }
+
+  .services-submenu a {
+    min-height: 2.75rem;
+    padding-inline: 0.75rem;
+    border-radius: 0.5rem;
+  }
+
+  .services-submenu a:hover,
+  .services-submenu a:focus-visible {
+    background: var(--color-surface);
+  }
+
+  .primary-menu > li > a::after {
     position: absolute;
     right: 0;
     bottom: 0.375rem;
@@ -187,8 +233,8 @@ nav a.contact-cta.active {
       transform 160ms ease;
   }
 
-  nav li a:hover::after,
-  nav li a.active::after {
+  .primary-menu > li > a:hover::after,
+  .primary-menu > li > a.active::after {
     opacity: 1;
     transform: scaleX(1);
   }
@@ -196,7 +242,7 @@ nav a.contact-cta.active {
 
 @media (prefers-reduced-motion: reduce) {
   .menu-toggle-icon span,
-  nav li a::after {
+  .primary-menu > li > a::after {
     transition: none;
   }
 }

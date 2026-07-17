@@ -9,12 +9,12 @@ export const routes: Routes = [
   },
   {
     path: 'servicios',
-    title: 'Servicios | ATSIestudio',
+    title: 'Servicios de desarrollo web para pymes | ATSIestudio',
     loadComponent: () => import('./pages/services/services').then(({ Services }) => Services),
   },
   {
     path: 'servicios/desarrollo-web',
-    title: 'Desarrollo web | ATSIestudio',
+    title: 'Desarrollo de páginas web para empresas | ATSIestudio',
     loadComponent: () =>
       import('./pages/web-development/web-development').then(
         ({ WebDevelopment }) => WebDevelopment,
@@ -22,7 +22,7 @@ export const routes: Routes = [
   },
   {
     path: 'servicios/desarrollo-personalizado',
-    title: 'Desarrollo personalizado | ATSIestudio',
+    title: 'Desarrollo de software a medida | ATSIestudio',
     loadComponent: () =>
       import('./pages/custom-development/custom-development').then(
         ({ CustomDevelopment }) => CustomDevelopment,
@@ -30,9 +30,17 @@ export const routes: Routes = [
   },
   {
     path: 'servicios/mantenimiento',
-    title: 'Mantenimiento web | ATSIestudio',
+    title: 'Mantenimiento web para empresas | ATSIestudio',
     loadComponent: () =>
       import('./pages/maintenance/maintenance').then(({ Maintenance }) => Maintenance),
+  },
+  {
+    path: 'servicios/hosting-y-dominios',
+    title: 'Gestión de hosting y dominios | ATSIestudio',
+    loadComponent: () =>
+      import('./pages/hosting-domains/hosting-domains').then(
+        ({ HostingDomains }) => HostingDomains,
+      ),
   },
   {
     path: 'como-trabajamos',

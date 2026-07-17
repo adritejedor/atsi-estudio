@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
 @Component({
-  selector: 'app-custom-development',
+  selector: 'app-hosting-domains',
   imports: [RouterLink],
-  templateUrl: './custom-development.html',
+  templateUrl: './hosting-domains.html',
   styleUrl: '../service-pages.scss',
 })
-export class CustomDevelopment {}
+export class HostingDomains {}

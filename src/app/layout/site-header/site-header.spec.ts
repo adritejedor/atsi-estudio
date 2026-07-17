@@ -80,6 +80,23 @@ describe('SiteHeader', () => {
     expect(callToAction?.getAttribute('href')).toBe('/contacto');
   });
 
+  it('should provide direct links to every service', () => {
+    const fixture = TestBed.createComponent(SiteHeader);
+    fixture.detectChanges();
+    const element = fixture.nativeElement as HTMLElement;
+    const links = Array.from(
+      element.querySelectorAll<HTMLAnchorElement>('.services-submenu a'),
+      (link) => link.getAttribute('href'),
+    );
+
+    expect(links).toEqual([
+      '/servicios/desarrollo-web',
+      '/servicios/desarrollo-personalizado',
+      '/servicios/mantenimiento',
+      '/servicios/hosting-y-dominios',
+    ]);
+  });
+
   it('should provide the responsive brand assets', () => {
     const fixture = TestBed.createComponent(SiteHeader);
     fixture.detectChanges();

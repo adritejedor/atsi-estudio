@@ -23,7 +23,7 @@
     </button>
 
     <nav id="primary-navigation" aria-label="Navegación principal" [class.is-open]="isMenuOpen()">
-      <ul>
+      <ul class="primary-menu">
         <li>
           <a
             routerLink="/"
@@ -34,7 +34,7 @@
             >Inicio</a
           >
         </li>
-        <li>
+        <li class="services-menu-item">
           <a
             routerLink="/servicios"
             routerLinkActive="active"
@@ -42,6 +42,24 @@
             (click)="closeMenu()"
             >Servicios</a
           >
+          <ul class="services-submenu" aria-label="Servicios específicos">
+            <li>
+              <a routerLink="/servicios/desarrollo-web" (click)="closeMenu()">Desarrollo web</a>
+            </li>
+            <li>
+              <a routerLink="/servicios/desarrollo-personalizado" (click)="closeMenu()"
+                >Desarrollo personalizado</a
+              >
+            </li>
+            <li>
+              <a routerLink="/servicios/mantenimiento" (click)="closeMenu()">Mantenimiento web</a>
+            </li>
+            <li>
+              <a routerLink="/servicios/hosting-y-dominios" (click)="closeMenu()"
+                >Hosting y dominios</a
+              >
+            </li>
+          </ul>
         </li>
         <li>
           <a
