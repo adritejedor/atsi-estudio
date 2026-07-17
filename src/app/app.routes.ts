@@ -44,7 +44,7 @@ export const routes: Routes = [
   },
   {
     path: 'como-trabajamos',
-    title: 'Cómo trabajamos | ATSIestudio',
+    title: 'Cómo trabajamos en proyectos web | ATSIestudio',
     loadComponent: () => import('./pages/process/process').then(({ Process }) => Process),
   },
   {
