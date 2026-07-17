@@ -1,3 +1,10 @@
 import { Component } from '@angular/core';
-@Component({ selector: 'app-about', templateUrl: './about.html' })
+import { RouterLink } from '@angular/router';
+
+@Component({
+  selector: 'app-about',
+  imports: [RouterLink],
+  templateUrl: './about.html',
+  styleUrl: './about.scss',
+})
 export class About {}

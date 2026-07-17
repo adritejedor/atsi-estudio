@@ -54,7 +54,7 @@ export const routes: Routes = [
   },
   {
     path: 'sobre-atsi-estudio',
-    title: 'Sobre ATSIestudio',
+    title: 'Sobre ATSIestudio | Desarrollo web en Segovia',
     loadComponent: () => import('./pages/about/about').then(({ About }) => About),
   },
   {
