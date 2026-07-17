@@ -49,7 +49,7 @@ export const routes: Routes = [
   },
   {
     path: 'proyectos',
-    title: 'Proyectos | ATSIestudio',
+    title: 'Proyectos de desarrollo web | ATSIestudio',
     loadComponent: () => import('./pages/projects/projects').then(({ Projects }) => Projects),
   },
   {
