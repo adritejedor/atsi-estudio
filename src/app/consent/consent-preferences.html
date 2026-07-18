@@ -1,0 +1,51 @@
+@if (consent.initialized() && consent.analytics() === 'undecided') {
+  <section class="consent-banner" aria-labelledby="consent-title">
+    <div>
+      <p class="eyebrow">Tu privacidad</p>
+      <h2 id="consent-title">¿Nos permites usar analítica?</h2>
+      <p>
+        Usamos Google Analytics para conocer qué contenidos resultan útiles. Solo se cargará si lo
+        aceptas y no enviaremos los datos que escribas en el formulario.
+        <a routerLink="/cookies">Consulta la política de cookies</a>.
+      </p>
+    </div>
+    <div class="consent-actions">
+      <button type="button" class="button-secondary" (click)="consent.choose('denied')">
+        Rechazar analítica
+      </button>
+      <button type="button" (click)="consent.choose('granted')">Aceptar analítica</button>
+    </div>
+  </section>
+}
+
+<dialog #settingsDialog aria-labelledby="settings-title" (close)="closeFromDialog()">
+  <div class="dialog-content">
+    <p class="eyebrow">Preferencias</p>
+    <h2 id="settings-title">Configurar analítica</h2>
+    <p>
+      Las tecnologías necesarias mantienen la web y el formulario operativos. Google Analytics es
+      opcional y solo se utiliza con tu autorización.
+    </p>
+    <p class="current-choice">
+      <strong>Preferencia actual:</strong>
+      @switch (consent.analytics()) {
+        @case ('granted') {
+          analítica aceptada.
+        }
+        @case ('denied') {
+          analítica rechazada.
+        }
+        @default {
+          todavía no has elegido.
+        }
+      }
+    </p>
+    <div class="consent-actions">
+      <button type="button" class="button-secondary" (click)="consent.choose('denied')">
+        Rechazar analítica
+      </button>
+      <button type="button" (click)="consent.choose('granted')">Aceptar analítica</button>
+    </div>
+    <button type="button" class="close-button" (click)="consent.closeSettings()">Cerrar</button>
+  </div>
+</dialog>

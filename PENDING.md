@@ -10,12 +10,18 @@ elementos provisionales por error.
       `400 Bad Request`. Obtener el código de error exacto, comprobar que la site key y el secreto
       pertenecen al mismo widget, autorizar el hostname usado (`localhost`, preview y producción),
       descartar interferencias de extensiones y repetir el flujo completo.
+- [x] Autorizar temporalmente `atsi-estudio--provisional-6idpiz2u.web.app` en el widget de Turnstile
+      para probar el formulario del preview; retirarlo cuando caduque el canal.
 - [ ] **Validar el formulario extremo a extremo en un entorno desplegado.** Confirmar token de
       Turnstile, llamada a Firebase Function, envío mediante Resend, recepción en
       `adriantejedor96@gmail.com`, respuesta de error y ausencia de datos personales en logs.
-- [ ] **Desplegar y verificar Firebase Hosting y Functions.** Todavía no se ha realizado el despliegue
-      de producción. Confirmar proyecto, región `europe-west1`, facturación, dominio, HTTPS, enlaces
-      profundos, headers, caché, 404 y procedimiento de rollback.
+- [ ] **Completar el despliegue definitivo de Firebase Hosting y Functions.** `submitContact` ya está
+      activa y el preview de Hosting está validado hasta el 25 de julio de 2026, con HTTPS, rutas,
+      404, headers, caché, canonical, CSP y exclusión de indexación. Falta conectar y verificar el
+      dominio personalizado, aprobar QA y promover una versión a `live` con rollback comprobado.
+- [ ] Definir la retención de imágenes antiguas de Functions en Artifact Registry y configurar su
+      política de limpieza en `europe-west1`; Firebase propone un día por defecto, pero debe
+      conservarse una ventana de rollback acordada.
 - [ ] **Verificar el remitente de Resend.** Confirmar que `atsiestudio.com` y
       `contacto@atsiestudio.com` están verificados y que SPF, DKIM y, cuando corresponda, DMARC están
       correctamente configurados.
@@ -86,14 +92,27 @@ elementos provisionales por error.
 
 ## Analytics y consentimiento
 
-- [ ] Crear o confirmar la propiedad de Google Analytics y facilitar el ID de medición.
-- [ ] Aprobar los eventos que se medirán: navegación SPA, inicio/envío/éxito/error del formulario y
-      contactos directos, siempre sin datos personales.
-- [ ] Implementar el consentimiento antes de cargar Analytics: aceptar y rechazar con igual claridad,
+- [x] Configurar el ID de medición de Google Analytics `G-DZ2WCW1HP3`.
+- [x] Implementar `page_view`, `generate_lead` y contactos por email, teléfono y WhatsApp sin datos
+      personales.
+- [x] Implementar el consentimiento antes de cargar Analytics: aceptar y rechazar con igual claridad,
       persistencia versionada y mecanismo de revocación.
+- [ ] Desactivar en el flujo web de GA4 la opción “Cambios de página basados en eventos del historial”
+      dentro de Medición mejorada para evitar duplicar los `page_view` enviados por Angular.
 - [ ] Verificar en Network que no existe ninguna petición de Analytics antes del consentimiento.
 - [ ] Actualizar la política de cookies y privacidad con el inventario, duración y tratamiento real de
       Analytics antes de activarlo.
+
+## Protección antispam
+
+- [x] Implementar honeypot, control temporal, Turnstile server-side, rechazo de tokens duplicados y
+      rate limiting efímero sin almacenar direcciones IP en claro.
+- [x] Registrar rechazos mediante categorías técnicas estructuradas, sin incluir campos del
+      formulario en los logs de aplicación.
+- [ ] Revisar métricas de abuso tras publicar y sustituir el límite por instancia por uno distribuido
+      únicamente si el volumen o los ataques lo justifican.
+- [ ] Auditar metadatos y retención de los logs de infraestructura generados automáticamente por
+      Google Cloud, que son independientes de los logs controlados por la aplicación.
 
 ## SEO y configuración pública
 
@@ -130,7 +149,8 @@ elementos provisionales por error.
       credenciales.
 - [ ] Definir responsables de revisión comercial, legal, técnica y de publicación.
 - [ ] Revisar cuotas, alertas y costes de Firebase, Resend, Cloudflare y Analytics.
-- [ ] Definir monitorización mínima del formulario y alertas de fallos sin registrar datos personales.
+- [ ] Configurar alertas para los eventos técnicos `contact_rejected` y `contact_delivery_failed`;
+      la Function ya los emite de forma estructurada sin campos del formulario.
 - [ ] Preparar la comprobación posterior al despliegue y el procedimiento para rotar secretos.
 
 ## Decisiones ya cerradas que no deben reabrirse sin motivo

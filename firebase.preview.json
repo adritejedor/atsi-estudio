@@ -1,13 +1,8 @@
 {
-  "functions": {
-    "source": "functions",
-    "runtime": "nodejs22",
-    "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"]
-  },
   "hosting": {
     "public": "dist/atsi-angular-starter/browser",
     "cleanUrls": true,
-    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "ignore": ["firebase.preview.json", "**/.*", "**/node_modules/**"],
     "headers": [
       {
         "source": "**",
@@ -23,7 +18,8 @@
           { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
           { "key": "Strict-Transport-Security", "value": "max-age=31536000" },
           { "key": "X-Content-Type-Options", "value": "nosniff" },
-          { "key": "X-Frame-Options", "value": "DENY" }
+          { "key": "X-Frame-Options", "value": "DENY" },
+          { "key": "X-Robots-Tag", "value": "noindex" }
         ]
       },
       {
@@ -57,10 +53,5 @@
         "function": { "functionId": "submitContact", "region": "europe-west1" }
       }
     ]
-  },
-  "emulators": {
-    "functions": { "port": 5001 },
-    "hosting": { "port": 5000 },
-    "ui": { "enabled": true }
   }
 }

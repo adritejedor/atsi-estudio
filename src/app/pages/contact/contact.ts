@@ -3,6 +3,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
 
+import { AnalyticsService } from '../../consent/analytics.service';
 import { ContactRequest, ContactStatus } from '../../contact/contact.models';
 import { ContactService } from '../../contact/contact.service';
 import { Turnstile } from '../../contact/turnstile';
@@ -40,6 +41,7 @@ export class Contact {
   });
 
   private readonly contactService = inject(ContactService);
+  private readonly analytics = inject(AnalyticsService);
   private readonly turnstile = viewChild(Turnstile);
   private startedAt = Date.now();
 
@@ -80,6 +82,7 @@ export class Contact {
       )
       .subscribe({
         next: () => {
+          this.analytics.trackLead();
           this.status.set('success');
           this.form.reset();
           this.startedAt = Date.now();

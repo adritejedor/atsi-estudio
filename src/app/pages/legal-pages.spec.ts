@@ -36,11 +36,11 @@ describe('legal pages', () => {
     expect(content.textContent).toContain('Cloudflare Turnstile');
   });
 
-  it('states that Analytics is not active in the cookie draft', async () => {
+  it('states that Analytics requires consent in the cookie draft', async () => {
     const fixture = await render(Cookies);
     const content = fixture.nativeElement as HTMLElement;
 
-    expect(content.textContent).toContain('Google Analytics no está activo');
+    expect(content.textContent).toContain('solo se activa después');
     expect(content.querySelector('table')).not.toBeNull();
   });
 });

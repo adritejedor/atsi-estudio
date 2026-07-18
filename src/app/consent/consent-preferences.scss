@@ -1,0 +1,110 @@
+:host {
+  display: contents;
+}
+
+.consent-banner {
+  position: fixed;
+  right: var(--page-gutter);
+  bottom: var(--page-gutter);
+  left: var(--page-gutter);
+  z-index: 20;
+  display: grid;
+  max-width: 68rem;
+  max-height: calc(100vh - (2 * var(--page-gutter)));
+  margin-inline: auto;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  overflow-y: auto;
+  border: 0.0625rem solid var(--color-border);
+  border-radius: 1rem;
+  background: var(--color-background);
+  box-shadow: 0 1rem 3rem rgba(11, 31, 58, 0.18);
+  gap: 1.25rem;
+}
+
+.eyebrow {
+  margin-bottom: 0.5rem;
+  color: var(--color-accent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+h2 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+}
+
+p {
+  margin-bottom: 0;
+  font-size: 1rem;
+}
+
+.consent-actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.consent-actions button {
+  width: 100%;
+  min-height: 3rem;
+}
+
+.button-secondary {
+  border: 0.0625rem solid var(--color-accent);
+  background: var(--color-background);
+  color: var(--color-accent);
+}
+
+.button-secondary:hover {
+  background: var(--color-surface);
+  color: var(--color-accent-hover);
+}
+
+dialog {
+  width: min(calc(100% - (2 * var(--page-gutter))), 38rem);
+  padding: 0;
+  border: 0;
+  border-radius: 1rem;
+  color: var(--color-text);
+}
+
+dialog::backdrop {
+  background: rgba(11, 31, 58, 0.65);
+}
+
+.dialog-content {
+  padding: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+.current-choice {
+  margin-block: 1.5rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+}
+
+.close-button {
+  display: block;
+  margin: 1rem auto 0;
+  background: transparent;
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.close-button:hover {
+  background: var(--color-surface);
+  color: var(--color-text);
+}
+
+@media (min-width: 45rem) {
+  .consent-banner {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+
+  .consent-actions {
+    grid-template-columns: repeat(2, minmax(10rem, 1fr));
+  }
+}

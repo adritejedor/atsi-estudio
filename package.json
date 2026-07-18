@@ -11,6 +11,8 @@
     "build": "ng build",
     "build:production": "ng build --configuration production",
     "firebase:emulators": "npm run build && firebase emulators:start --only functions,hosting",
+    "firebase:preview": "npm run build:production && firebase hosting:channel:deploy provisional --expires 7d --project atsi-estudio --config firebase.preview.json",
+    "firebase:deploy:hosting": "npm run build:production && firebase deploy --only hosting --project atsi-estudio",
     "firebase:deploy": "npm run build && firebase deploy --only hosting,functions",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

@@ -7,8 +7,8 @@
       ATSIestudio y diferencia las necesarias de las opcionales.
     </p>
     <p class="draft-notice" role="note">
-      <strong>Borrador provisional:</strong> debe verificarse de nuevo mediante una auditoría del
-      navegador cuando se incorporen Analytics, el dominio definitivo o nuevos proveedores.
+      <strong>Borrador provisional:</strong> la integración técnica de Analytics ya está preparada,
+      pero el inventario debe verificarse en producción y someterse a revisión profesional.
     </p>
   </header>
 
@@ -35,8 +35,9 @@
   <section id="uso-actual" aria-labelledby="current-use-title">
     <h2 id="current-use-title">2. Uso actual</h2>
     <p>
-      La web no instala actualmente Google Analytics ni cookies publicitarias. Firebase Hosting y el
-      código propio no necesitan crear cookies para mostrar las páginas.
+      Firebase Hosting y el código propio no necesitan crear cookies para mostrar las páginas.
+      Google Analytics es opcional: su script no se descarga ni transmite información hasta que la
+      persona acepta expresamente la analítica.
     </p>
     <p>
       El formulario utiliza Cloudflare Turnstile como medida de seguridad. Su widget se conecta a
@@ -60,6 +61,18 @@
             <th scope="col">Finalidad</th>
             <th scope="col">Tipo</th>
             <th scope="col">Duración</th>
+          </tr>
+          <tr>
+            <th scope="row">Google Analytics (`_ga`)</th>
+            <td>Distinguir navegadores para elaborar estadísticas agregadas de uso.</td>
+            <td>Analítica opcional.</td>
+            <td>Hasta 2 años desde la última actualización.</td>
+          </tr>
+          <tr>
+            <th scope="row">Google Analytics (`_ga_DZ2WCW1HP3`)</th>
+            <td>Mantener el estado de la sesión de medición.</td>
+            <td>Analítica opcional.</td>
+            <td>Hasta 2 años desde la última actualización.</td>
           </tr>
         </thead>
         <tbody>
@@ -93,12 +106,18 @@
   </section>
 
   <section id="cambios" aria-labelledby="changes-title">
-    <h2 id="changes-title">5. Analytics y cambios futuros</h2>
+    <h2 id="changes-title">5. Google Analytics y cambios de preferencia</h2>
     <p>
-      Google Analytics no está activo en este momento. Si se incorpora, esta política se actualizará
-      con su inventario, finalidad y duración, y no se cargará analítica no esencial antes de una
-      elección válida. Aceptar y rechazar deberán ofrecerse con la misma claridad y la preferencia
-      podrá modificarse posteriormente.
+      Google Analytics solo se activa después de elegir “Aceptar analítica”. Se miden páginas
+      vistas, contactos directos y formularios enviados correctamente, sin incluir nombre, email,
+      teléfono, empresa ni contenido del mensaje. Las funciones publicitarias y de personalización
+      están deshabilitadas en la configuración técnica.
+    </p>
+    <p>
+      La elección queda guardada localmente y puede modificarse en cualquier momento mediante
+      “Configurar privacidad” en el pie de página. Al rechazar después de haber aceptado, se
+      actualiza el estado de consentimiento y se intentan eliminar las cookies de Analytics del
+      dominio.
     </p>
   </section>
 
