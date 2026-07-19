@@ -23,6 +23,8 @@ describe('App', () => {
     expect(element.querySelector('header')).toBeTruthy();
     expect(element.querySelector('main#main-content')).toBeTruthy();
     expect(element.querySelector('footer')).toBeTruthy();
+    expect(element.querySelector<HTMLImageElement>('footer .footer-logo img')?.alt).toBe('');
+    expect(element.querySelectorAll('footer nav li')).toHaveLength(4);
     expect(element.querySelector<HTMLAnchorElement>('.skip-link')?.hash).toBe('#main-content');
   });
 });

@@ -199,13 +199,17 @@ async function deliverContactEmail(
 }
 
 function contactEmailHtml(payload: ContactPayload): string {
+  const phone = payload.phone
+    ? `<p><strong>Teléfono:</strong> ${escapeHtml(payload.phone)}</p>`
+    : '';
   const company = payload.company
     ? `<p><strong>Empresa:</strong> ${escapeHtml(payload.company)}</p>`
     : '';
-  return `<h1>Nueva solicitud desde ATSIestudio</h1><p><strong>Nombre:</strong> ${escapeHtml(payload.name)}</p><p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>${company}<p><strong>Tipo:</strong> ${escapeHtml(payload.projectType)}</p><p><strong>Mensaje:</strong></p><p>${escapeHtml(payload.message).replace(/\n/g, '<br>')}</p>`;
+  return `<h1>Nueva solicitud desde ATSIestudio</h1><p><strong>Nombre:</strong> ${escapeHtml(payload.name)}</p><p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>${phone}${company}<p><strong>Tipo:</strong> ${escapeHtml(payload.projectType)}</p><p><strong>Mensaje:</strong></p><p>${escapeHtml(payload.message).replace(/\n/g, '<br>')}</p>`;
 }
 
 function contactEmailText(payload: ContactPayload): string {
+  const phone = payload.phone ? `Teléfono: ${payload.phone}\n` : '';
   const company = payload.company ? `Empresa: ${payload.company}\n` : '';
-  return `Nueva solicitud desde ATSIestudio\n\nNombre: ${payload.name}\nEmail: ${payload.email}\n${company}Tipo: ${payload.projectType}\n\nMensaje:\n${payload.message}`;
+  return `Nueva solicitud desde ATSIestudio\n\nNombre: ${payload.name}\nEmail: ${payload.email}\n${phone}${company}Tipo: ${payload.projectType}\n\nMensaje:\n${payload.message}`;
 }

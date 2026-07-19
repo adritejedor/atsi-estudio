@@ -23,7 +23,17 @@
         </a>
         <a href="https://wa.me/34655340607" target="_blank" rel="noopener noreferrer">
           <span>WhatsApp</span>
-          Escribir por WhatsApp <span aria-hidden="true">↗</span>
+          <span class="contact-link-value">
+            Escribir por WhatsApp
+            <svg
+              class="external-link-icon"
+              viewBox="0 0 20 20"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path d="M7 5h8v8M15 5 5 15" />
+            </svg>
+          </span>
         </a>
       </address>
       <p class="location">ATSIestudio · Segovia, España</p>
@@ -79,6 +89,22 @@
 
           <div class="field-row">
             <div class="field">
+              <label for="phone">Teléfono <span>(opcional)</span></label>
+              <input
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                autocomplete="tel"
+                inputmode="tel"
+                maxlength="30"
+                aria-describedby="phone-error"
+                [attr.aria-invalid]="form.controls.phone.touched && form.controls.phone.invalid"
+              />
+              @if (form.controls.phone.touched && form.controls.phone.invalid) {
+                <p id="phone-error" class="field-error">Introduce un teléfono válido.</p>
+              }
+            </div>
+            <div class="field">
               <label for="company">Empresa <span>(opcional)</span></label>
               <input
                 id="company"
@@ -88,27 +114,28 @@
                 maxlength="120"
               />
             </div>
-            <div class="field">
-              <label for="project-type">Tipo de proyecto *</label>
-              <select
-                id="project-type"
-                formControlName="projectType"
-                aria-describedby="project-type-error"
-                [attr.aria-invalid]="
-                  form.controls.projectType.touched && form.controls.projectType.invalid
-                "
-              >
-                <option value="">Selecciona una opción</option>
-                <option value="web">Desarrollo web</option>
-                <option value="custom">Desarrollo personalizado</option>
-                <option value="maintenance">Mantenimiento web</option>
-                <option value="hosting">Hosting y dominios</option>
-                <option value="other">Otro o no estoy seguro</option>
-              </select>
-              @if (form.controls.projectType.touched && form.controls.projectType.invalid) {
-                <p id="project-type-error" class="field-error">Selecciona una opción.</p>
-              }
-            </div>
+          </div>
+
+          <div class="field">
+            <label for="project-type">Tipo de proyecto *</label>
+            <select
+              id="project-type"
+              formControlName="projectType"
+              aria-describedby="project-type-error"
+              [attr.aria-invalid]="
+                form.controls.projectType.touched && form.controls.projectType.invalid
+              "
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="web">Desarrollo web</option>
+              <option value="custom">Desarrollo personalizado</option>
+              <option value="maintenance">Mantenimiento web</option>
+              <option value="hosting">Hosting y dominios</option>
+              <option value="other">Otro o no estoy seguro</option>
+            </select>
+            @if (form.controls.projectType.touched && form.controls.projectType.invalid) {
+              <p id="project-type-error" class="field-error">Selecciona una opción.</p>
+            }
           </div>
 
           <div class="field">

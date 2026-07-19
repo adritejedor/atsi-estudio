@@ -84,6 +84,17 @@ a:hover {
   color: var(--color-accent-hover);
 }
 
+.external-link-icon {
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.75;
+}
+
 :where(a, button, input, select, textarea):focus-visible {
   outline: 0.125rem solid var(--color-accent);
   outline-offset: 0.1875rem;

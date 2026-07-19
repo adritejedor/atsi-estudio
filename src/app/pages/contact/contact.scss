@@ -63,6 +63,17 @@ address a > span:first-child {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
+
+.contact-link-value {
+  display: inline-flex;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: normal;
+  text-transform: none;
+  align-items: center;
+  gap: 0.4rem;
+}
 .location {
   margin-top: 1.5rem;
   font-size: 0.9375rem;

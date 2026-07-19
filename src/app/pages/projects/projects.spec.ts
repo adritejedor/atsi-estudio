@@ -34,6 +34,7 @@ describe('Projects', () => {
       expect(link.getAttribute('target')).toBe('_blank');
       expect(link.getAttribute('rel')).toContain('noopener');
     });
+    expect(element.querySelector('.project-heading .external-link-icon')).toBeTruthy();
   });
 
   it('links the call to action to contact', () => {

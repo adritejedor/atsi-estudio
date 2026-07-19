@@ -1,6 +1,7 @@
 export interface ContactPayload {
   name: string;
   email: string;
+  phone: string;
   company: string;
   projectType: string;
   message: string;
@@ -16,6 +17,7 @@ export type ContactValidationResult =
   { valid: true; payload: ContactPayload } | { valid: false; reason: ContactRejectionReason };
 
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const phonePattern = /^[0-9+().\s-]*$/;
 const projectTypes = new Set(['web', 'custom', 'maintenance', 'hosting', 'other']);
 
 export function parseContactPayload(value: unknown, now = Date.now()): ContactPayload | null {
@@ -30,6 +32,7 @@ export function validateContactPayload(value: unknown, now = Date.now()): Contac
   const body = value as Record<string, unknown>;
   const name = normalizedString(body['name']);
   const email = normalizedString(body['email']).toLowerCase();
+  const phone = normalizedString(body['phone']);
   const company = normalizedString(body['company']);
   const projectType = normalizedString(body['projectType']);
   const message = normalizedString(body['message']);
@@ -52,6 +55,8 @@ export function validateContactPayload(value: unknown, now = Date.now()): Contac
     name.length > 100 ||
     email.length > 254 ||
     !emailPattern.test(email) ||
+    phone.length > 30 ||
+    !phonePattern.test(phone) ||
     company.length > 120 ||
     !projectTypes.has(projectType) ||
     message.length < 20 ||
@@ -67,6 +72,7 @@ export function validateContactPayload(value: unknown, now = Date.now()): Contac
     payload: {
       name,
       email,
+      phone,
       company,
       projectType,
       message,

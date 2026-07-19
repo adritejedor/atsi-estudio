@@ -3,6 +3,7 @@ export type ContactStatus = 'idle' | 'submitting' | 'success' | 'error';
 export interface ContactRequest {
   name: string;
   email: string;
+  phone: string;
   company: string;
   projectType: string;
   message: string;

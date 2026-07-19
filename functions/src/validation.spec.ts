@@ -7,6 +7,7 @@ const now = 10_000;
 const validPayload = {
   name: 'Ana',
   email: 'ana@example.com',
+  phone: '+34 600 123 123',
   company: '',
   projectType: 'web',
   message: 'Necesito una web profesional para mi empresa.',
@@ -24,6 +25,7 @@ describe('contact validation', () => {
     assert.equal(parseContactPayload({ ...validPayload, website: 'bot' }, now), null);
     assert.equal(parseContactPayload({ ...validPayload, startedAt: 9_000 }, now), null);
     assert.equal(parseContactPayload({ ...validPayload, email: 'invalid' }, now), null);
+    assert.equal(parseContactPayload({ ...validPayload, phone: 'llámame' }, now), null);
   });
   it('classifies antispam rejections without returning submitted data', () => {
     assert.deepEqual(validateContactPayload({ ...validPayload, website: 'bot' }, now), {

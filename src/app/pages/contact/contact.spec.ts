@@ -27,7 +27,11 @@ describe('Contact', () => {
     expect(emailLink?.textContent).toContain('contacto@atsiestudio.com');
     expect(element.querySelector('a[href="tel:+34655340607"]')).toBeTruthy();
     expect(element.querySelector('a[href="https://wa.me/34655340607"]')).toBeTruthy();
-    expect(element.querySelectorAll('label').length).toBeGreaterThanOrEqual(7);
+    expect(
+      element.querySelector('a[href="https://wa.me/34655340607"] .external-link-icon'),
+    ).toBeTruthy();
+    expect(element.querySelector('input[autocomplete="tel"]')).toBeTruthy();
+    expect(element.querySelectorAll('label').length).toBeGreaterThanOrEqual(8);
   });
 
   it('prevents an invalid submission, exposes an error and focuses the first invalid field', async () => {
@@ -52,6 +56,7 @@ describe('Contact', () => {
     component.form.patchValue({
       name: 'Ana',
       email: 'ana@example.com',
+      phone: '+34 600 123 123',
       company: '',
       projectType: 'web',
       message: 'Necesito una web profesional para mi empresa.',
@@ -65,6 +70,7 @@ describe('Contact', () => {
 
     const request = TestBed.inject(HttpTestingController).expectOne('/api/contact');
     expect(request.request.method).toBe('POST');
+    expect(request.request.body.phone).toBe('+34 600 123 123');
     request.flush({ success: true });
     fixture.detectChanges();
     await Promise.resolve();

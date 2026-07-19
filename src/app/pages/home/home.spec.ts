@@ -18,6 +18,8 @@ describe('Home', () => {
     expect(element.querySelectorAll('h1')).toHaveLength(1);
     expect(element.querySelectorAll('h2')).toHaveLength(6);
     expect(element.querySelectorAll('details')).toHaveLength(4);
+    expect(element.querySelector('.visual-workspace')).toBeTruthy();
+    expect(element.querySelector('.preview-panel')).toBeTruthy();
   });
 
   it('should provide descriptive links to services and contact', () => {

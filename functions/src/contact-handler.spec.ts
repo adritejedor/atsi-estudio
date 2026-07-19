@@ -7,6 +7,7 @@ import { ContactRateLimiter } from './rate-limiter.js';
 const validBody = {
   name: 'Ana',
   email: 'ana@example.com',
+  phone: '+34 600 123 123',
   company: '',
   projectType: 'web',
   message: 'Necesito una web profesional para mi empresa.',
@@ -138,6 +139,7 @@ describe('contact HTTP handler', () => {
     assert.equal(response.headers.get('Retry-After'), '60');
     assert.equal(external.calls.length, 0);
     assert.equal(JSON.stringify(external.logs).includes(validBody.email), false);
+    assert.equal(JSON.stringify(external.logs).includes(validBody.phone), false);
     assert.equal(JSON.stringify(external.logs).includes(validBody.message), false);
     assert.deepEqual(external.logs[0]?.data, {
       event: 'contact_rejected',
@@ -164,6 +166,8 @@ describe('contact HTTP handler', () => {
     assert.equal(emailBody['reply_to'], 'ana@example.com');
     assert.equal(typeof emailBody['html'], 'string');
     assert.equal(typeof emailBody['text'], 'string');
+    assert.match(String(emailBody['html']), /Teléfono:<\/strong> \+34 600 123 123/);
+    assert.match(String(emailBody['text']), /Teléfono: \+34 600 123 123/);
   });
 
   it('does not deliver a duplicated Turnstile token twice', async () => {

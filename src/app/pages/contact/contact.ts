@@ -27,6 +27,10 @@ export class Contact {
       nonNullable: true,
       validators: [Validators.required, Validators.email, Validators.maxLength(254)],
     }),
+    phone: new FormControl('', {
+      nonNullable: true,
+      validators: [Validators.maxLength(30), Validators.pattern(/^[0-9+().\s-]*$/)],
+    }),
     company: new FormControl('', { nonNullable: true, validators: [Validators.maxLength(120)] }),
     projectType: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
     message: new FormControl('', {

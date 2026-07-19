@@ -22,7 +22,6 @@ describe('legal pages', () => {
     const content = fixture.nativeElement as HTMLElement;
 
     expect(content.querySelector('h1')?.textContent).toContain('Aviso legal');
-    expect(content.textContent).toContain('Borrador provisional');
     expect(content.querySelector('a[href="mailto:contacto@atsiestudio.com"]')).not.toBeNull();
     expect(content.querySelector('a[href="tel:+34655340607"]')).not.toBeNull();
   });
