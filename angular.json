@@ -4,13 +4,11 @@
   "cli": {
     "packageManager": "npm",
     "analytics": "c068fe67-c30f-4057-824c-5d9940255d17",
-    "schematicCollections": [
-      "angular-eslint"
-    ]
+    "schematicCollections": ["angular-eslint"]
   },
   "newProjectRoot": "projects",
   "projects": {
-    "atsi-angular-starter": {
+    "atsi-estudio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -33,9 +31,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -52,7 +48,7 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
+                  "maximumWarning": "6kB",
                   "maximumError": "8kB"
                 }
               ],
@@ -70,10 +66,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "atsi-angular-starter:build:production"
+              "buildTarget": "atsi-estudio:build:production"
             },
             "development": {
-              "buildTarget": "atsi-angular-starter:build:development"
+              "buildTarget": "atsi-estudio:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,10 +80,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/**/*.ts",
-              "src/**/*.html"
-            ]
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         }
       }

@@ -1,0 +1,103 @@
+<header>
+  <div class="header-content">
+    <a class="wordmark" routerLink="/" aria-label="ATSIestudio, inicio" (click)="closeMenu()">
+      <picture>
+        <source media="(max-width: 30rem)" srcset="/images/atsi-estudio-symbol.svg" />
+        <img src="/images/atsi-estudio-logo.svg" width="1200" height="360" alt="" />
+      </picture>
+    </a>
+
+    <button
+      #menuToggle
+      class="menu-toggle"
+      type="button"
+      aria-controls="primary-navigation"
+      [attr.aria-expanded]="isMenuOpen()"
+      (click)="toggleMenu()"
+    >
+      <span class="menu-toggle-label">Menú</span>
+      <span class="menu-toggle-icon" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <nav id="primary-navigation" aria-label="Navegación principal" [class.is-open]="isMenuOpen()">
+      <ul class="primary-menu">
+        <li>
+          <a
+            routerLink="/"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()"
+            >Inicio</a
+          >
+        </li>
+        <li class="services-menu-item">
+          <a
+            routerLink="/servicios"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Servicios</a
+          >
+          <ul class="services-submenu" aria-label="Servicios específicos">
+            <li>
+              <a routerLink="/servicios/desarrollo-web" (click)="closeMenu()">Desarrollo web</a>
+            </li>
+            <li>
+              <a routerLink="/servicios/desarrollo-personalizado" (click)="closeMenu()"
+                >Desarrollo personalizado</a
+              >
+            </li>
+            <li>
+              <a routerLink="/servicios/mantenimiento" (click)="closeMenu()">Mantenimiento web</a>
+            </li>
+            <li>
+              <a routerLink="/servicios/hosting-y-dominios" (click)="closeMenu()"
+                >Hosting y dominios</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a
+            routerLink="/como-trabajamos"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Cómo trabajamos</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/proyectos"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Proyectos</a
+          >
+        </li>
+        <li>
+          <a
+            routerLink="/sobre-atsi-estudio"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            (click)="closeMenu()"
+            >Sobre ATSIestudio</a
+          >
+        </li>
+      </ul>
+
+      <a
+        class="contact-cta"
+        routerLink="/contacto"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        (click)="closeMenu()"
+        >Cuéntanos tu proyecto</a
+      >
+    </nav>
+  </div>
+</header>
