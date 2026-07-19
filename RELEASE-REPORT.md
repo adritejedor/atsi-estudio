@@ -100,3 +100,29 @@ ejecutaron por separado.
 - Stakeholders informed: usuario responsable del proyecto.
 - Time: al cierre de esta tarea.
 - Notes: preview temporal, no apto todavía para publicación profesional.
+
+---
+
+## Actualización del preview — 19 de julio de 2026
+
+- **Cambio:** identificador interno actualizado al nombre definitivo `atsi-estudio`.
+- **Salida verificada:** `dist/atsi-estudio/browser`.
+- **Entorno:** canal Firebase Hosting `provisional`; el canal `live` no se modificó.
+- **URL:** `https://atsi-estudio--provisional-6idpiz2u.web.app`.
+- **Caducidad:** 26 de julio de 2026 a las 19:21, hora peninsular española.
+- **Validación previa:** `npm ci`, 40 pruebas frontend, 11 pruebas de Functions,
+  `npm run validate` y build de producción correctos.
+- **Smoke test:** home, servicios, contacto, páginas legales, sitemap y robots responden 200; una
+  ruta inexistente responde 404; `/api/contact` alcanza la Function y rechaza un payload vacío con
+  400; CSP, HSTS y `X-Robots-Tag: noindex` están activos.
+- **Observación:** Firebase CLI no pudo sincronizar el dominio del canal con Firebase Authentication
+  porque Authentication no está inicializado. La aplicación no utiliza Firebase Authentication y
+  el despliegue de Hosting terminó correctamente.
+- **Rollback:** el canal conserva versiones anteriores; puede seleccionarse una release previa o
+  eliminarse el canal temporal sin afectar a `live`.
+- **Lighthouse posterior:** el contraste insuficiente del número de la segunda tarjeta de servicios
+  y del eyebrow del CTA final se corrigió con un azul claro sobre la superficie oscura. El preview
+  obtiene 100 en Performance, Accessibility y Best Practices tanto en móvil como en escritorio. SEO
+  obtiene 69 únicamente por el `noindex` deliberado del canal temporal; el mismo build con la
+  configuración pública obtiene 100 en SEO y Accessibility, 100 en Best Practices y 99 en
+  Performance.

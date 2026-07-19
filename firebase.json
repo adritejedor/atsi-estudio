@@ -5,7 +5,7 @@
     "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"]
   },
   "hosting": {
-    "public": "dist/atsi-angular-starter/browser",
+    "public": "dist/atsi-estudio/browser",
     "cleanUrls": true,
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "headers": [

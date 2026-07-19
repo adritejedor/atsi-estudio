@@ -35,7 +35,7 @@ Los secretos del formulario se gestionan mediante Google Secret Manager. Consult
 ## Firebase Hosting
 
 El proyecto Firebase autorizado es `atsi-estudio`. Angular genera las rutas estáticas en
-`dist/atsi-angular-starter/browser`; `/api/contact` se reescribe a `submitContact` en
+`dist/atsi-estudio/browser`; `/api/contact` se reescribe a `submitContact` en
 `europe-west1`.
 
 Preview temporal, público pero excluido de indexación mediante `X-Robots-Tag`:

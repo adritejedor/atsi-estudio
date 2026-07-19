@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/atsi-angular-starter/browser",
+    "public": "dist/atsi-estudio/browser",
     "cleanUrls": true,
     "ignore": ["firebase.preview.json", "**/.*", "**/node_modules/**"],
     "headers": [

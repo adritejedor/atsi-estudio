@@ -17,7 +17,7 @@ describe('legal pages', () => {
     return fixture;
   }
 
-  it('marks the legal notice as provisional and keeps real contact links', async () => {
+  it('shows the definitive legal notice and keeps real contact links', async () => {
     const fixture = await render(LegalNotice);
     const content = fixture.nativeElement as HTMLElement;
 
@@ -26,7 +26,7 @@ describe('legal pages', () => {
     expect(content.querySelector('a[href="tel:+34655340607"]')).not.toBeNull();
   });
 
-  it('describes the actual contact processors in the privacy draft', async () => {
+  it('describes the actual contact processors in the privacy policy', async () => {
     const fixture = await render(Privacy);
     const content = fixture.nativeElement as HTMLElement;
 
@@ -35,7 +35,7 @@ describe('legal pages', () => {
     expect(content.textContent).toContain('Cloudflare Turnstile');
   });
 
-  it('states that Analytics requires consent in the cookie draft', async () => {
+  it('states that Analytics requires consent in the cookie policy', async () => {
     const fixture = await render(Cookies);
     const content = fixture.nativeElement as HTMLElement;
 

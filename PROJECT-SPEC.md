@@ -85,9 +85,9 @@ web profesional corporativa
 /
 ├── Inicio
 ├── Servicios
-│   ├── Desarrollo web
-│   ├── Desarrollo personalizado
-│   └── Mantenimiento
+│ ├── Desarrollo web
+│ ├── Desarrollo personalizado
+│ └── Mantenimiento
 ├── Cómo trabajamos
 ├── Proyectos
 ├── Sobre ATSIestudio
@@ -148,8 +148,6 @@ google analitics
 
 ## Lo proporciona el cliente
 
-
-
 ## Lo genera inicialmente la IA y posteriormente se revisa manualmente.
 
 - Optimización SEO
@@ -159,6 +157,7 @@ google analitics
 - Textos
 
 ---
+
 # 11. Identidad visual
 
 ## Concepto
@@ -573,6 +572,7 @@ El objetivo principal de la web es conseguir solicitudes de presupuesto.
 El contenido debe ser claro y directo.
 
 Evitar:
+
 - Lenguaje excesivamente técnico.
 - Frases vacías de marketing.
 - Promesas exageradas.

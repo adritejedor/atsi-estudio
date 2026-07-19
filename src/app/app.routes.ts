@@ -138,8 +138,8 @@ export const routes: Routes = [
     data: {
       seo: {
         description:
-          'Información legal provisional sobre la titularidad y el uso del sitio web de ATSIestudio.',
-        robots: 'noindex,follow',
+          'Información legal sobre la titularidad, las condiciones de uso y la propiedad intelectual del sitio web de ATSIestudio.',
+        canonicalPath: '/aviso-legal',
       },
     },
     loadComponent: () =>
@@ -151,8 +151,8 @@ export const routes: Routes = [
     data: {
       seo: {
         description:
-          'Información provisional sobre el tratamiento de datos personales y los derechos de las personas usuarias de ATSIestudio.',
-        robots: 'noindex,follow',
+          'Información sobre el tratamiento de datos personales y los derechos de las personas usuarias de ATSIestudio.',
+        canonicalPath: '/privacidad',
       },
     },
     loadComponent: () => import('./pages/privacy/privacy').then(({ Privacy }) => Privacy),
@@ -163,8 +163,8 @@ export const routes: Routes = [
     data: {
       seo: {
         description:
-          'Información provisional sobre las cookies y tecnologías de seguridad utilizadas en el sitio web de ATSIestudio.',
-        robots: 'noindex,follow',
+          'Información sobre las cookies, la analítica opcional y las tecnologías de seguridad utilizadas en ATSIestudio.',
+        canonicalPath: '/cookies',
       },
     },
     loadComponent: () => import('./pages/cookies/cookies').then(({ Cookies }) => Cookies),

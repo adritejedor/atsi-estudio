@@ -15,11 +15,10 @@ describe('route SEO metadata', () => {
     expect(new Set(descriptions).size).toBe(descriptions.length);
   });
 
-  it('defines canonicals only for routes ready to be indexed', () => {
+  it('defines canonicals for every indexable route', () => {
     const indexable = metadata.filter((page) => (page.robots ?? 'index,follow') === 'index,follow');
-    const provisional = metadata.filter((page) => page.robots === 'noindex,follow');
 
     expect(indexable.every((page) => page.canonicalPath?.startsWith('/'))).toBe(true);
-    expect(provisional.every((page) => page.canonicalPath === undefined)).toBe(true);
+    expect(indexable).toHaveLength(publicRoutes.length);
   });
 });

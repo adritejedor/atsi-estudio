@@ -31,43 +31,43 @@
 
 ## 3. Functional tests
 
-| ID | Test | Result | Notes |
-|---|---|---|---|
-| F-01 |  | Pass / Fail / N/A |  |
+| ID   | Test | Result            | Notes |
+| ---- | ---- | ----------------- | ----- |
+| F-01 |      | Pass / Fail / N/A |       |
 
 ---
 
 ## 4. Responsive tests
 
 | Device / viewport | Result | Notes |
-|---|---|---|
-| Mobile |  |  |
-| Tablet |  |  |
-| Desktop |  |  |
+| ----------------- | ------ | ----- |
+| Mobile            |        |       |
+| Tablet            |        |       |
+| Desktop           |        |       |
 
 ---
 
 ## 5. Accessibility
 
-| Item | Result | Notes |
-|---|---|---|
-| Keyboard |  |  |
-| Focus |  |  |
-| Forms |  |  |
-| Semantics |  |  |
-| Contrast |  |  |
+| Item      | Result | Notes |
+| --------- | ------ | ----- |
+| Keyboard  |        |       |
+| Focus     |        |       |
+| Forms     |        |       |
+| Semantics |        |       |
+| Contrast  |        |       |
 
 ---
 
 ## 6. SEO
 
-| Item | Result | Notes |
-|---|---|---|
-| Metadata |  |  |
-| Headings |  |  |
-| Sitemap |  |  |
-| Robots |  |  |
-| Canonical |  |  |
+| Item      | Result | Notes |
+| --------- | ------ | ----- |
+| Metadata  |        |       |
+| Headings  |        |       |
+| Sitemap   |        |       |
+| Robots    |        |       |
+| Canonical |        |       |
 
 ---
 
@@ -84,9 +84,9 @@
 
 ## 8. Issues
 
-| ID | Severity | Area | Description | Status |
-|---|---|---|---|---|
-| QA-01 | Critical / High / Medium / Low |  |  | Open |
+| ID    | Severity                       | Area | Description | Status |
+| ----- | ------------------------------ | ---- | ----------- | ------ |
+| QA-01 | Critical / High / Medium / Low |      |             | Open   |
 
 ---
 

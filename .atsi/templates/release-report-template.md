@@ -53,24 +53,24 @@ Additional commands:
 
 ## 5. Smoke tests
 
-| Test | Result | Notes |
-|---|---|---|
-| Home |  |  |
-| Direct routes |  |  |
-| Navigation |  |  |
-| Form |  |  |
-| Analytics |  |  |
-| Cookies |  |  |
-| 404 |  |  |
-| SSL |  |  |
+| Test          | Result | Notes |
+| ------------- | ------ | ----- |
+| Home          |        |       |
+| Direct routes |        |       |
+| Navigation    |        |       |
+| Form          |        |       |
+| Analytics     |        |       |
+| Cookies       |        |       |
+| 404           |        |       |
+| SSL           |        |       |
 
 ---
 
 ## 6. Incidents
 
-| ID | Description | Impact | Resolution |
-|---|---|---|---|
-|  |  |  |  |
+| ID  | Description | Impact | Resolution |
+| --- | ----------- | ------ | ---------- |
+|     |             |        |            |
 
 ---
 
