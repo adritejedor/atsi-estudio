@@ -27,9 +27,32 @@ describe('Service pages', () => {
     expect(element.querySelector('h1')?.textContent?.trim()).toBeTruthy();
     expect(element.querySelectorAll('h2').length).toBeGreaterThanOrEqual(2);
     expect(element.querySelector('a[href="/contacto"]')).toBeTruthy();
-    if (component !== Services) {
-      expect(element.textContent).toContain('Desde 1.000 €');
+  });
+
+  it.each([
+    [WebDevelopment, ['Desde 690 € + IVA', 'Desde 1.290 € + IVA', 'Desde 2.490 € + IVA']],
+    [CustomDevelopment, ['Presupuesto cerrado']],
+    [
+      Maintenance,
+      ['59 €/mes + IVA', '149 €/mes + IVA', 'Presupuesto a medida', 'no incluye el hosting'],
+    ],
+    [
+      HostingDomains,
+      [
+        '19 €/mes o 190 €/año + IVA',
+        'solo para proyectos de ATSIestudio',
+        'no puede contratarse para proyectos que no hayan sido desarrollados por ATSIestudio',
+      ],
+    ],
+  ])('shows the approved pricing and conditions for %s', (component, expectedContent) => {
+    const fixture = TestBed.createComponent(component);
+    fixture.detectChanges();
+    const content = (fixture.nativeElement as HTMLElement).textContent ?? '';
+
+    for (const expected of expectedContent) {
+      expect(content).toContain(expected);
     }
+    expect(content).not.toContain('Desde 1.000 €');
   });
 
   it('links the service index to each service detail', () => {
@@ -49,5 +72,10 @@ describe('Service pages', () => {
       '/servicios/mantenimiento',
       '/servicios/hosting-y-dominios',
     ]);
+
+    const content = (fixture.nativeElement as HTMLElement).textContent ?? '';
+    expect(content).toContain('Desde 690 € + IVA');
+    expect(content).toContain('Desde 59 €/mes + IVA');
+    expect(content).toContain('19 €/mes o 190 €/año + IVA');
   });
 });

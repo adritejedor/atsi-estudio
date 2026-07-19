@@ -37,7 +37,7 @@
       </div>
 
       @if (status() === 'success') {
-        <div class="status-message success-message" role="status" tabindex="-1">
+        <div #successMessage class="status-message success-message" role="status" tabindex="-1">
           <h3>Mensaje enviado correctamente.</h3>
           <p>Gracias por contarnos tu proyecto. Hemos recibido la solicitud.</p>
           <button type="button" (click)="status.set('idle')">Enviar otro mensaje</button>

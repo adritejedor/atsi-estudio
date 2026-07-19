@@ -67,27 +67,27 @@ elementos provisionales por error.
 
 ## Servicios y precios
 
-- [ ] **Sustituir todos los precios provisionales “Desde 1.000 €”.** Definir importes o rangos reales
+- [x] **Sustituir todos los precios provisionales “Desde 1.000 €”.** Definir importes o rangos reales
       para desarrollo web, desarrollo personalizado, mantenimiento y hosting/dominios.
-- [ ] Precisar qué incluye y qué excluye el precio inicial de cada servicio.
-- [ ] Definir si los precios incluyen o no impuestos y cómo debe comunicarse legalmente.
-- [ ] Separar costes puntuales y recurrentes, especialmente mantenimiento, hosting, dominios,
+- [x] Precisar qué incluye y qué excluye el precio inicial de cada servicio.
+- [x] Definir si los precios incluyen o no impuestos y cómo debe comunicarse legalmente.
+- [x] Separar costes puntuales y recurrentes, especialmente mantenimiento, hosting, dominios,
       renovaciones, licencias y servicios de terceros.
-- [ ] Definir condiciones que modifican el presupuesto: páginas, integraciones, migraciones,
+- [x] Definir condiciones que modifican el presupuesto: páginas, integraciones, migraciones,
       contenidos, urgencia, soporte y revisiones.
-- [ ] Alinear `PROJECT-SPEC.md` e `IMPLEMENTATION-PLAN.md` con el cuarto servicio de hosting y
+- [x] Alinear `PROJECT-SPEC.md` e `IMPLEMENTATION-PLAN.md` con el cuarto servicio de hosting y
       dominios, añadido posteriormente por decisión del usuario. `PROJECT-SPEC.md` no debe modificarse
       sin autorización expresa.
 
 ## Proyectos y recursos visuales
 
-- [ ] Confirmar permiso y alcance publicable de `skepsisink.com`, incluida la captura utilizada.
-- [ ] Revisar el copy del proyecto para que describa únicamente trabajo y resultados verificables.
-- [ ] Añadir proyectos reales futuros reutilizando la estructura existente; no duplicar
+- [x] Confirmar permiso y alcance publicable de `skepsisink.com`, incluida la captura utilizada.
+- [x] Revisar el copy del proyecto para que describa únicamente trabajo y resultados verificables.
+- [x] Añadir proyectos reales futuros reutilizando la estructura existente; no duplicar
       `skepsisink.com` como si fueran casos distintos.
-- [ ] Confirmar si la página de proyectos debe permanecer en la navegación mientras solo exista un
+- [x] Confirmar si la página de proyectos debe permanecer en la navegación mientras solo exista un
       proyecto publicado.
-- [ ] Revisar textos alternativos, dimensiones, compresión y formatos de todas las imágenes finales.
+- [x] Revisar textos alternativos, dimensiones, compresión y formatos de todas las imágenes finales.
 - [ ] Preparar una imagen social/OG definitiva cuando se cierre la fase SEO.
 
 ## Analytics y consentimiento
@@ -100,7 +100,7 @@ elementos provisionales por error.
 - [ ] Desactivar en el flujo web de GA4 la opción “Cambios de página basados en eventos del historial”
       dentro de Medición mejorada para evitar duplicar los `page_view` enviados por Angular.
 - [ ] Verificar en Network que no existe ninguna petición de Analytics antes del consentimiento.
-- [ ] Actualizar la política de cookies y privacidad con el inventario, duración y tratamiento real de
+- [x] Actualizar la política de cookies y privacidad con el inventario, duración y tratamiento real de
       Analytics antes de activarlo.
 
 ## Protección antispam

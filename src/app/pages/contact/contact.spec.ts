@@ -30,18 +30,20 @@ describe('Contact', () => {
     expect(element.querySelectorAll('label').length).toBeGreaterThanOrEqual(7);
   });
 
-  it('prevents an invalid submission and exposes a useful error', () => {
+  it('prevents an invalid submission, exposes an error and focuses the first invalid field', async () => {
     const fixture = TestBed.createComponent(Contact);
     fixture.detectChanges();
     (fixture.nativeElement as HTMLElement).querySelector<HTMLFormElement>('form')?.requestSubmit();
     fixture.detectChanges();
+    await Promise.resolve();
 
     expect(
       (fixture.nativeElement as HTMLElement).querySelector('[role="alert"]')?.textContent,
     ).toContain('Revisa los campos');
+    expect(document.activeElement?.id).toBe('name');
   });
 
-  it('submits valid data once and renders the success state', () => {
+  it('submits valid data once, renders and focuses the success state', async () => {
     const fixture = TestBed.createComponent(Contact);
     fixture.detectChanges();
     const component = fixture.componentInstance as unknown as {
@@ -65,9 +67,12 @@ describe('Contact', () => {
     expect(request.request.method).toBe('POST');
     request.flush({ success: true });
     fixture.detectChanges();
+    await Promise.resolve();
 
-    expect(
-      (fixture.nativeElement as HTMLElement).querySelector('[role="status"]')?.textContent,
-    ).toContain('Mensaje enviado correctamente');
+    const success = (fixture.nativeElement as HTMLElement).querySelector<HTMLElement>(
+      '[role="status"]',
+    );
+    expect(success?.textContent).toContain('Mensaje enviado correctamente');
+    expect(document.activeElement).toBe(success);
   });
 });

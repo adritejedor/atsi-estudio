@@ -1,4 +1,4 @@
-import { Component, inject, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { finalize } from 'rxjs';
@@ -42,6 +42,8 @@ export class Contact {
 
   private readonly contactService = inject(ContactService);
   private readonly analytics = inject(AnalyticsService);
+  private readonly element = inject<ElementRef<HTMLElement>>(ElementRef);
+  private readonly successMessage = viewChild<ElementRef<HTMLElement>>('successMessage');
   private readonly turnstile = viewChild(Turnstile);
   private startedAt = Date.now();
 
@@ -55,6 +57,9 @@ export class Contact {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
       this.submitError.set('Revisa los campos indicados antes de enviar el formulario.');
+      queueMicrotask(() =>
+        this.element.nativeElement.querySelector<HTMLElement>('[aria-invalid="true"]')?.focus(),
+      );
       return;
     }
 
@@ -87,6 +92,7 @@ export class Contact {
           this.form.reset();
           this.startedAt = Date.now();
           this.turnstile()?.reset();
+          queueMicrotask(() => this.successMessage()?.nativeElement.focus());
         },
         error: () => {
           this.status.set('error');
