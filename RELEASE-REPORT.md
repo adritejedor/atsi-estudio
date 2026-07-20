@@ -126,3 +126,47 @@ ejecutaron por separado.
   obtiene 69 únicamente por el `noindex` deliberado del canal temporal; el mismo build con la
   configuración pública obtiene 100 en SEO y Accessibility, 100 en Best Practices y 99 en
   Performance.
+
+---
+
+## Producción v1.0.0 — 19 de julio de 2026
+
+- **Rama y commit base:** `main`, `32dceb7`.
+- **Versión:** `1.0.0`.
+- **Destino:** Firebase project y Hosting site `atsi-estudio`, canal `live`.
+- **Hosting release:** `1784482857842000`; versión `6f097d63ff4a9cac`.
+- **Function:** `submitContact`, revisión `submitcontact-00005-sub`, estado `ACTIVE`, Node.js 22 en
+  `europe-west1`.
+- **Validación previa:** `npm ci`, 40 pruebas frontend, 11 pruebas de Functions,
+  `npm run validate`, build/prerender y auditorías de dependencias correctos.
+- **Smoke test de Hosting:** home, servicios, contacto, páginas legales, sitemap y robots responden
+  200 en `https://atsi-estudio.web.app`; una ruta inexistente responde 404.
+- **Smoke test de backend:** el rewrite llega a la Function; el origen definitivo está autorizado y
+  un payload vacío se rechaza con 400.
+- **Dominio raíz:** `atsiestudio.com` resuelve a `199.36.158.100` y redirige HTTP a HTTPS. El
+  certificado todavía no es válido para el hostname, por lo que queda pendiente repetir QA cuando
+  Firebase termine el aprovisionamiento.
+- **Dominio `www`:** todavía no dispone de resolución DNS.
+- **Rollback:** seleccionar una release anterior del canal `live`; la release previa no contenía la
+  aplicación y respondía 404, por lo que la release del preview constituye la referencia funcional
+  anterior.
+
+### Cierre del dominio definitivo
+
+- **Release final:** `1784491843311000`; versión de Hosting `fd26b0e069ae9983`.
+- **Dominio:** `https://atsiestudio.com` responde 200 con certificado válido; HTTP redirige a HTTPS.
+- **Redirección:** `https://www.atsiestudio.com` devuelve 301 hacia el dominio canónico conservando
+  la ruta solicitada.
+- **Function:** `submitContact` continúa activa en la revisión `submitcontact-00005-sub`; no había
+  cambios de código que desplegar.
+- **Artifact Registry:** política aplicada para eliminar imágenes de Functions con más de 7 días.
+- **Validación final:** 40 pruebas frontend, 11 pruebas de Functions, `npm run validate`,
+  build/prerender y ambas auditorías de producción correctas y sin vulnerabilidades.
+- **Smoke test:** 13 rutas con HTTP 200, metadatos y canonical; recursos públicos correctos, enlaces
+  internos sin errores, 404 real, cabeceras de seguridad, sitemap y robots verificados. La API
+  devuelve 400 ante un payload inválido del origen canónico y 403 ante un origen no permitido.
+- **Lighthouse producción:** Performance 100, Accessibility 100, Best Practices 100 y SEO 100;
+  contraste y rastreabilidad superados. No se observaron solicitudes de Analytics antes del
+  consentimiento.
+- **Pendiente externo:** envío legítimo con Turnstile/Resend, autenticación SPF/DKIM/DMARC,
+  DebugView tras consentimiento y QA manual multidispositivo, detallados en `PENDING.md`.
