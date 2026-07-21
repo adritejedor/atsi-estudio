@@ -6,6 +6,7 @@ export interface ContactRequest {
   phone: string;
   company: string;
   projectType: string;
+  budget: string;
   message: string;
   privacyAccepted: true;
   turnstileToken: string;

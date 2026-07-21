@@ -10,6 +10,7 @@ const validBody = {
   phone: '+34 600 123 123',
   company: '',
   projectType: 'web',
+  budget: '690-1290',
   message: 'Necesito una web profesional para mi empresa.',
   privacyAccepted: true,
   turnstileToken: 'valid-token',
@@ -164,10 +165,15 @@ describe('contact HTTP handler', () => {
     assert.equal(external.calls[1]?.input, 'https://api.resend.com/emails');
     const emailBody = JSON.parse(String(external.calls[1]?.init?.body)) as Record<string, unknown>;
     assert.equal(emailBody['reply_to'], 'ana@example.com');
+    assert.deepEqual(emailBody['to'], ['contacto@atsiestudio.com']);
     assert.equal(typeof emailBody['html'], 'string');
     assert.equal(typeof emailBody['text'], 'string');
     assert.match(String(emailBody['html']), /Teléfono:<\/strong> \+34 600 123 123/);
+    assert.match(String(emailBody['html']), /Tipo:<\/strong> Desarrollo web/);
+    assert.match(String(emailBody['html']), /Presupuesto:<\/strong> De 690 € a 1\.290 €/);
     assert.match(String(emailBody['text']), /Teléfono: \+34 600 123 123/);
+    assert.match(String(emailBody['text']), /Tipo: Desarrollo web/);
+    assert.match(String(emailBody['text']), /Presupuesto: De 690 € a 1\.290 €/);
   });
 
   it('does not deliver a duplicated Turnstile token twice', async () => {

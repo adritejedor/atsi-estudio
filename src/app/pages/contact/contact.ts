@@ -33,6 +33,7 @@ export class Contact {
     }),
     company: new FormControl('', { nonNullable: true, validators: [Validators.maxLength(120)] }),
     projectType: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
+    budget: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
     message: new FormControl('', {
       nonNullable: true,
       validators: [Validators.required, Validators.minLength(20), Validators.maxLength(3000)],

@@ -139,6 +139,27 @@
           </div>
 
           <div class="field">
+            <label for="budget">Presupuesto aproximado *</label>
+            <select
+              id="budget"
+              formControlName="budget"
+              aria-describedby="budget-help budget-error"
+              [attr.aria-invalid]="form.controls.budget.touched && form.controls.budget.invalid"
+            >
+              <option value="">Selecciona un rango</option>
+              <option value="690-1290">De 690 € a 1.290 €</option>
+              <option value="1290-2490">De 1.290 € a 2.490 €</option>
+              <option value="2490-5000">De 2.490 € a 5.000 €</option>
+              <option value="more-than-5000">Más de 5.000 €</option>
+              <option value="not-defined">Aún no lo tengo definido</option>
+            </select>
+            <p id="budget-help" class="field-help">Importes orientativos, sin IVA.</p>
+            @if (form.controls.budget.touched && form.controls.budget.invalid) {
+              <p id="budget-error" class="field-error">Selecciona un rango de presupuesto.</p>
+            }
+          </div>
+
+          <div class="field">
             <label for="message">Cuéntanos qué necesitas *</label>
             <textarea
               id="message"
