@@ -31,6 +31,7 @@ describe('Contact', () => {
       element.querySelector('a[href="https://wa.me/34655340607"] .external-link-icon'),
     ).toBeTruthy();
     expect(element.querySelector('input[autocomplete="tel"]')).toBeTruthy();
+    expect(element.querySelectorAll<HTMLSelectElement>('select#budget option')).toHaveLength(6);
     expect(element.querySelectorAll('label').length).toBeGreaterThanOrEqual(8);
   });
 
@@ -59,6 +60,7 @@ describe('Contact', () => {
       phone: '+34 600 123 123',
       company: '',
       projectType: 'web',
+      budget: '690-1290',
       message: 'Necesito una web profesional para mi empresa.',
       privacyAccepted: true,
     });
@@ -71,6 +73,7 @@ describe('Contact', () => {
     const request = TestBed.inject(HttpTestingController).expectOne('/api/contact');
     expect(request.request.method).toBe('POST');
     expect(request.request.body.phone).toBe('+34 600 123 123');
+    expect(request.request.body.budget).toBe('690-1290');
     request.flush({ success: true });
     fixture.detectChanges();
     await Promise.resolve();

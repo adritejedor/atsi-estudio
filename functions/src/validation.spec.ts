@@ -10,6 +10,7 @@ const validPayload = {
   phone: '+34 600 123 123',
   company: '',
   projectType: 'web',
+  budget: '690-1290',
   message: 'Necesito una web profesional para mi empresa.',
   privacyAccepted: true,
   turnstileToken: 'token',
@@ -26,6 +27,7 @@ describe('contact validation', () => {
     assert.equal(parseContactPayload({ ...validPayload, startedAt: 9_000 }, now), null);
     assert.equal(parseContactPayload({ ...validPayload, email: 'invalid' }, now), null);
     assert.equal(parseContactPayload({ ...validPayload, phone: 'llámame' }, now), null);
+    assert.equal(parseContactPayload({ ...validPayload, budget: 'unlimited' }, now), null);
   });
   it('classifies antispam rejections without returning submitted data', () => {
     assert.deepEqual(validateContactPayload({ ...validPayload, website: 'bot' }, now), {

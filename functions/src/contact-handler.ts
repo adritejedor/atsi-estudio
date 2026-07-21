@@ -10,6 +10,22 @@ const allowedOrigins = new Set([
   'http://localhost:4200',
 ]);
 
+const projectTypeLabels: Readonly<Record<string, string>> = {
+  web: 'Desarrollo web',
+  custom: 'Desarrollo personalizado',
+  maintenance: 'Mantenimiento web',
+  hosting: 'Hosting y dominios',
+  other: 'Otro o no estoy seguro',
+};
+
+const budgetLabels: Readonly<Record<string, string>> = {
+  '690-1290': 'De 690 € a 1.290 €',
+  '1290-2490': 'De 1.290 € a 2.490 €',
+  '2490-5000': 'De 2.490 € a 5.000 €',
+  'more-than-5000': 'Más de 5.000 €',
+  'not-defined': 'Aún no lo tengo definido',
+};
+
 interface RequestLike {
   method: string;
   body: unknown;
@@ -186,7 +202,7 @@ async function deliverContactEmail(
     },
     body: JSON.stringify({
       from: 'ATSIestudio <contacto@atsiestudio.com>',
-      to: ['adriantejedor96@gmail.com'],
+      to: ['contacto@atsiestudio.com'],
       reply_to: payload.email,
       subject: `Nueva solicitud web: ${payload.name.replace(/[\r\n]+/g, ' ')}`,
       html: contactEmailHtml(payload),
@@ -199,17 +215,21 @@ async function deliverContactEmail(
 }
 
 function contactEmailHtml(payload: ContactPayload): string {
+  const projectType = projectTypeLabels[payload.projectType] ?? payload.projectType;
+  const budget = budgetLabels[payload.budget] ?? payload.budget;
   const phone = payload.phone
     ? `<p><strong>Teléfono:</strong> ${escapeHtml(payload.phone)}</p>`
     : '';
   const company = payload.company
     ? `<p><strong>Empresa:</strong> ${escapeHtml(payload.company)}</p>`
     : '';
-  return `<h1>Nueva solicitud desde ATSIestudio</h1><p><strong>Nombre:</strong> ${escapeHtml(payload.name)}</p><p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>${phone}${company}<p><strong>Tipo:</strong> ${escapeHtml(payload.projectType)}</p><p><strong>Mensaje:</strong></p><p>${escapeHtml(payload.message).replace(/\n/g, '<br>')}</p>`;
+  return `<h1>Nueva solicitud desde ATSIestudio</h1><p><strong>Nombre:</strong> ${escapeHtml(payload.name)}</p><p><strong>Email:</strong> ${escapeHtml(payload.email)}</p>${phone}${company}<p><strong>Tipo:</strong> ${escapeHtml(projectType)}</p><p><strong>Presupuesto:</strong> ${escapeHtml(budget)}</p><p><strong>Mensaje:</strong></p><p>${escapeHtml(payload.message).replace(/\n/g, '<br>')}</p>`;
 }
 
 function contactEmailText(payload: ContactPayload): string {
+  const projectType = projectTypeLabels[payload.projectType] ?? payload.projectType;
+  const budget = budgetLabels[payload.budget] ?? payload.budget;
   const phone = payload.phone ? `Teléfono: ${payload.phone}\n` : '';
   const company = payload.company ? `Empresa: ${payload.company}\n` : '';
-  return `Nueva solicitud desde ATSIestudio\n\nNombre: ${payload.name}\nEmail: ${payload.email}\n${phone}${company}Tipo: ${payload.projectType}\n\nMensaje:\n${payload.message}`;
+  return `Nueva solicitud desde ATSIestudio\n\nNombre: ${payload.name}\nEmail: ${payload.email}\n${phone}${company}Tipo: ${projectType}\nPresupuesto: ${budget}\n\nMensaje:\n${payload.message}`;
 }

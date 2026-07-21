@@ -4,6 +4,7 @@ export interface ContactPayload {
   phone: string;
   company: string;
   projectType: string;
+  budget: string;
   message: string;
   privacyAccepted: true;
   turnstileToken: string;
@@ -19,6 +20,7 @@ export type ContactValidationResult =
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phonePattern = /^[0-9+().\s-]*$/;
 const projectTypes = new Set(['web', 'custom', 'maintenance', 'hosting', 'other']);
+const budgets = new Set(['690-1290', '1290-2490', '2490-5000', 'more-than-5000', 'not-defined']);
 
 export function parseContactPayload(value: unknown, now = Date.now()): ContactPayload | null {
   const result = validateContactPayload(value, now);
@@ -35,6 +37,7 @@ export function validateContactPayload(value: unknown, now = Date.now()): Contac
   const phone = normalizedString(body['phone']);
   const company = normalizedString(body['company']);
   const projectType = normalizedString(body['projectType']);
+  const budget = normalizedString(body['budget']);
   const message = normalizedString(body['message']);
   const turnstileToken = normalizedString(body['turnstileToken']);
   const website = normalizedString(body['website']);
@@ -59,6 +62,7 @@ export function validateContactPayload(value: unknown, now = Date.now()): Contac
     !phonePattern.test(phone) ||
     company.length > 120 ||
     !projectTypes.has(projectType) ||
+    !budgets.has(budget) ||
     message.length < 20 ||
     message.length > 3000 ||
     turnstileToken.length < 1 ||
@@ -75,6 +79,7 @@ export function validateContactPayload(value: unknown, now = Date.now()): Contac
       phone,
       company,
       projectType,
+      budget,
       message,
       privacyAccepted: true,
       turnstileToken,
